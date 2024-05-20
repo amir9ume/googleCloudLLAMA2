@@ -1,19 +1,4 @@
 
-'''
-from flask import Flask, jsonify
-
-app = Flask(__name__)
-
-@app.route('/')
-def home():
-    return jsonify(message="Hello, World!")
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
-
-'''
-
-
 access_token=''
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
@@ -52,22 +37,7 @@ if not model_files_exist(model_path):
 else:
     print("Model and tokenizer already exist. Loading from saved files...")
 
-# Reload your files offline
-tokenizer = AutoTokenizer.from_pretrained(model_path)
-model = AutoModelForCausalLM.from_pretrained(model_path)
 
-
-#tokenizer = AutoTokenizer.from_pretrained(model_id, token= access_token)
-#model = AutoModelForCausalLM.from_pretrained(
-#    model_id,
-#    torch_dtype=torch.bfloat16,trust_remote_code= True,low_cpu_mem_usage = True,
-#    token= access_token
-#).cpu()
-
-#torch_dtype=torch.float16, trust_remote_code=True, low_cpu_mem_usage = True).cpu()
-
-#from accelerate import disk_offload
-#disk_offload(model=model, offload_dir="offload")
 
 
 @app.route('/generate', methods=['POST'])
