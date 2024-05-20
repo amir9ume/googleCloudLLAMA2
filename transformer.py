@@ -14,7 +14,7 @@ if __name__ == '__main__':
 '''
 
 
-access_token='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'
+access_token=''
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
